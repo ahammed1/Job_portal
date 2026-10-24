@@ -1,4 +1,4 @@
-import  { useContext } from "react";
+import { useContext } from "react";
 import { Context } from "../../main";
 
 const Footer = () => {
@@ -6,7 +6,7 @@ const Footer = () => {
   if (!isAuthorized) return null;
   return (
     <footer className="bg-dark text-light text-center py-3 mt-5">
-      <div>&copy; All Rights Reserved By CareerConnect MERN Job Portal.</div>
+      <div>&copy; All Rights Reserved By Talviro Job Portal.</div>
     </footer>
   );
 };
