@@ -17,51 +17,49 @@ import PostJob from "./components/Job/PostJob";
 import NotFound from "./components/NotFound/NotFound";
 import MyJobs from "./components/Job/MyJob";
 
-const API_BASE_URL = (
-  import.meta.env.VITE_API_URL || "http://localhost:4000"
-).replace(/\/$/, "");
+const API_BASE_URL = (import.meta.env.VITE_API_URL || "http://localhost:4000").replace(/\/$/, "");
 
 const App = () => {
   const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
 
   useEffect(() => {
+    let active = true;
     const fetchUser = async () => {
       try {
-        const response = await axios.get(
-          `${API_BASE_URL}/api/v1/user/getuser`,
-          {
-            withCredentials: true,
-          }
-        );
-        setUser(response.data.user);
-        setIsAuthorized(true);
-      } catch (error) {
-        setIsAuthorized(false);
+        const response = await axios.get(`${API_BASE_URL}/api/v1/user/getuser`, { withCredentials: true });
+        if (active) {
+          setUser(response.data.user);
+          setIsAuthorized(true);
+        }
+      } catch {
+        if (active) {
+          setUser({});
+          setIsAuthorized(false);
+        }
       }
     };
     fetchUser();
-  }, [isAuthorized, setIsAuthorized, setUser]);
+    return () => { active = false; };
+  }, [setIsAuthorized, setUser]);
 
   return (
-    <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/job/getall" element={<Jobs />} />
-          <Route path="/job/:id" element={<JobDetails />} />
-          <Route path="/application/:id" element={<Application />} />
-          <Route path="/applications/me" element={<MyApplications />} />
-          <Route path="/job/post" element={<PostJob />} />
-          <Route path="/job/me" element={<MyJobs />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-        <Toaster />
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/job/getall" element={<Jobs />} />
+        <Route path="/job/:id" element={<JobDetails />} />
+        <Route path="/application/:id" element={<Application />} />
+        <Route path="/applications/me" element={<MyApplications />} />
+        <Route path="/job/post" element={<PostJob />} />
+        <Route path="/job/me" element={<MyJobs />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+      <Toaster position="top-right" />
+    </BrowserRouter>
   );
 };
 
