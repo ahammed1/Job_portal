@@ -12,10 +12,10 @@ import Home from "./components/Home/Home";
 import Jobs from "./components/Job/Jobs";
 import JobDetails from "./components/Job/JobDetails";
 import Application from "./components/Application/Application";
-import MyApplications from "./components/Application/MyApplications";
+import MyApplications from "./components/Application/MyApplication";
 import PostJob from "./components/Job/PostJob";
 import NotFound from "./components/NotFound/NotFound";
-import MyJobs from "./components/Job/MyJobs";
+import MyJobs from "./components/Job/MyJob";
 
 const App = () => {
   const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
@@ -36,7 +36,7 @@ const App = () => {
       }
     };
     fetchUser();
-  }, [isAuthorized]);
+  }, [isAuthorized, setIsAuthorized, setUser]);
 
   return (
     <>
