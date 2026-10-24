@@ -17,6 +17,10 @@ import PostJob from "./components/Job/PostJob";
 import NotFound from "./components/NotFound/NotFound";
 import MyJobs from "./components/Job/MyJob";
 
+const API_BASE_URL = (
+  import.meta.env.VITE_API_URL || "http://localhost:4000"
+).replace(/\/$/, "");
+
 const App = () => {
   const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
 
@@ -24,7 +28,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/v1/user/getuser",
+          `${API_BASE_URL}/api/v1/user/getuser`,
           {
             withCredentials: true,
           }
