@@ -1,14 +1,17 @@
-
 import mongoose from "mongoose";
+import dns from "node:dns";
 
-export const dbConnection = async () => {
-  try {
-    await mongoose.connect(process.env.DB_URL, {
-      dbName: "job_portal",
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
+
+export const dbConnection = () => {
+  mongoose
+    .connect(process.env.DB_URL, {
+      dbName: "MERN_JOB_PORTAL",
+    })
+    .then(() => {
+      console.log("Connected to MongoDB successfully!");
+    })
+    .catch((err) => {
+      console.log(`Error connecting to database: ${err}`);
     });
-
-    console.log("Connected to MongoDB successfully!");
-  } catch (err) {
-    console.error("Error connecting to database:", err.message);
-  }
 };
