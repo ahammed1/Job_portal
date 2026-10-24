@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <main className="container py-5">
       <section className="rounded-4 p-4 p-md-5 mb-5 text-white" style={{ background: "linear-gradient(120deg, #102a43, #176b87)" }}>
-        <p className="text-uppercase fw-semibold small mb-2" style={{ letterSpacing: "0.16em" }}>CareerConnect • Your next step starts here</p>
+        <p className="text-uppercase fw-semibold small mb-2" style={{ letterSpacing: "0.16em" }}>Talviro • Your next step starts here</p>
         <div className="row align-items-center g-4">
           <div className="col-lg-8">
             <h1 className="display-5 fw-bold mb-3">{isEmployer ? "Build your team with the right people." : "Find work that moves you forward."}</h1>
@@ -33,7 +33,7 @@ const Home = () => {
           <div className="col-lg-4">
             <div className="bg-white bg-opacity-10 rounded-4 p-4">
               <p className="small mb-1">SIGNED IN AS</p>
-              <h4 className="fw-bold mb-1">{user?.name || user?.firstName || "CareerConnect user"}</h4>
+              <h4 className="fw-bold mb-1">{user?.name || user?.firstName || "Talviro user"}</h4>
               <span className="badge text-bg-light text-dark">{user?.role || "Member"}</span>
             </div>
           </div>
