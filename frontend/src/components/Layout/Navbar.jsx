@@ -28,11 +28,11 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3 px-lg-4">
       <div className="container-fluid">
-        <Link className="navbar-brand fw-bold" to="/">CareerConnect</Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#careerConnectNav" aria-controls="careerConnectNav" aria-expanded="false" aria-label="Toggle navigation">
+        <Link className="navbar-brand fw-bold" to="/">Talviro</Link>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#talviroNav" aria-controls="talviroNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>
-        <div className="collapse navbar-collapse" id="careerConnectNav">
+        <div className="collapse navbar-collapse" id="talviroNav">
           <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-2">
             <li className="nav-item"><Link className="nav-link" to="/">Dashboard</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/job/getall">Browse Jobs</Link></li>
