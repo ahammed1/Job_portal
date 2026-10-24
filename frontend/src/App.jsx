@@ -40,7 +40,7 @@ const App = () => {
     };
     fetchUser();
     return () => { active = false; };
-  }, [setIsAuthorized, setUser]);
+  }, [isAuthorized, setIsAuthorized, setUser]);
 
   return (
     <BrowserRouter>
