@@ -1,9 +1,13 @@
+
 import mongoose from "mongoose";
+import dns from "node:dns";
+
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 export const dbConnection = async () => {
   try {
     if (!process.env.DB_URL) {
-      throw new Error("DB_URL is missing. Check backend/config/config.env.");
+      throw new Error("DB_URL is missing.");
     }
 
     await mongoose.connect(process.env.DB_URL, {
